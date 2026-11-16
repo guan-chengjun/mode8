@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>跳楼机 Drop Tower · 交互式 3D 可视化</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Three.js 通过 import map 从 CDN 加载（需联网） -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- 3D 画布容器 -->
+  <div id="scene-container"></div>
+
+  <!-- 控制面板 -->
+  <div id="control-panel">
+    <h1>跳楼机 · Drop Tower</h1>
+
+    <div class="group">
+      <button id="btn-xray" class="btn">透视模式：关</button>
+    </div>
+
+    <div class="group">
+      <button id="btn-play" class="btn primary">▶ 播放</button>
+      <button id="btn-reset" class="btn">⟲ 重置</button>
+    </div>
+
+    <div class="group">
+      <label for="speed-slider">速度 <span id="speed-value">1.0×</span></label>
+      <input type="range" id="speed-slider" min="0.25" max="3" step="0.25" value="1">
+    </div>
+
+    <div class="group status">
+      <div>阶段：<span id="status-phase">待机</span></div>
+      <div>高度：<span id="status-height">2.2</span> m</div>
+      <div>速度：<span id="status-speed">0.0</span> m/s</div>
+    </div>
+
+    <div class="hint">
+      左键拖拽旋转 · 滚轮缩放 · 右键平移<br>
+      点击任意部件查看说明
+    </div>
+  </div>
+
+  <!-- 部件信息弹窗 -->
+  <div id="part-popup" class="hidden">
+    <button id="popup-close">×</button>
+    <h2 id="popup-name"></h2>
+    <p><strong>作用：</strong><span id="popup-role"></span></p>
+    <p><strong>工作原理：</strong><span id="popup-principle"></span></p>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
